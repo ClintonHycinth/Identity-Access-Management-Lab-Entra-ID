@@ -16,7 +16,7 @@ Create users and groups in Microsoft Entra ID for a lab environment and assign t
 * Search for Microsoft Entra ID   
 * Navigate to the Users and Groups sections
 
-![Login page](/Portal-lab-Entra-ID/portal-labs/images/image1.png)
+![](/Portal-lab-Entra-ID/portal-labs/images/image001.png)
 
 ### 
 
@@ -34,7 +34,7 @@ Create users and groups in Microsoft Entra ID for a lab environment and assign t
    * Password: auto-generate (recommended)  
    * Job title: Lab Engineer
 
-   ![](/Portal-lab-Entra-ID/portal-labs/images/image2.png) 
+   ![](/Portal-lab-Entra-ID/portal-labs/images/image002.png) 
 
 5. Review and create.
 
@@ -54,7 +54,7 @@ Configure:
 
 ###      3\. Create the group 
 
-![](/Portal-lab-Entra-ID/portal-labs/images/image3.png)
+![](/Portal-lab-Entra-ID/portal-labs/images/image003.png)
 
 ### 
 
@@ -63,11 +63,11 @@ Configure:
 1. Open the group.  
 2. Go to Members under the manage section.  
 3. Click Add members and select all the members you want to add.  
-   ![](/Portal-lab-Entra-ID/portal-labs/images/image4.png)
+   ![](/Portal-lab-Entra-ID/portal-labs/images/image004.png)
 
 
 4. Click Select  
-   ![](/Portal-lab-Entra-ID/portal-labs/images/image5.png)
+   ![](/Portal-lab-Entra-ID/portal-labs/images/image005.png)
 
 ## 
 
@@ -79,7 +79,7 @@ Configure:
 
 1. Search for and select Virtual Machines in the search bar  
 2. Select Create \- Virtual Machine  
-   ![](/Portal-lab-Entra-ID/portal-labs/images/image6.png)
+   ![](/Portal-lab-Entra-ID/portal-labs/images/image006.png)
      
 3. Use the following basic settings:  
 * Resource group: rg-104  
@@ -90,11 +90,11 @@ Configure:
 * Security type: Standard  
 * Select Spot instance to reduce cost.
 
-![](/Portal-lab-Entra-ID/portal-labs/images/image7.png)
+![](/Portal-lab-Entra-ID/portal-labs/images/image007.png)
 
 4. Review and create the VM.
 
-![](/Portal-lab-Entra-ID/portal-labs/images/image8.png)
+![](/Portal-lab-Entra-ID/portal-labs/images/image008.png)
 
 ## 
 
@@ -107,7 +107,7 @@ To allow the engineering group to manage VMs:
 3. Click Add → Add role assignment.  
    
 
-![](/Portal-lab-Entra-ID/portal-labs/images/image9.png)
+![](/Portal-lab-Entra-ID/portal-labs/images/image009.png)
 
 4. Choose a role like Virtual Machine Contributor or Contributor.  
 5. Select Members \- choose your group, Lab-VM-Engineers.

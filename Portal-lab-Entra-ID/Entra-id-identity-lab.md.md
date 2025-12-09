@@ -9,10 +9,9 @@ Create users and groups in Microsoft Entra ID for a lab environment and assign t
 * Micosoft Entra ID  
 * Azure Virtual Machines
 
-#
 
-#
 
+ 
 ## **Step 1: Access Microsoft Entra ID**
 
 * Go to Azure Portal   
@@ -21,11 +20,11 @@ Create users and groups in Microsoft Entra ID for a lab environment and assign t
 
 ![](/Portal-lab-Entra-ID/portal-labs/images/image001.png)
 
-##
 
-##
 
-##
+
+
+
 
 ## **Step 2: Create The Users**
 
@@ -43,11 +42,9 @@ Create users and groups in Microsoft Entra ID for a lab environment and assign t
  ![](/Portal-lab-Entra-ID/portal-labs/images/image002.png) 
    * Repeat this for the required number of engineers.
 
-##
 
-##
 
-##
+
 
 ## **Step 3: Create A Security Group**
 
@@ -65,11 +62,9 @@ Configure:
 
 ![](/Portal-lab-Entra-ID/portal-labs/images/image003.png)
 
-##
 
-##
 
-##
+
 
 ## **Step 4: Add Members Manually**
 

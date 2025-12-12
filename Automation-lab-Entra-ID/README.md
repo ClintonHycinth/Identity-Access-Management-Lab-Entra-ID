@@ -50,7 +50,8 @@ Pick the cheapest VM size automatically
 powershell
 Copy code
 ./Deploy-Lab.ps1 -AutoPickCheapest
-Requirements
+
+### **Requirements**
 Azure Cloud Shell (recommended)
 
 Az PowerShell modules
@@ -67,13 +68,13 @@ Deploy VMs
 
 Assign RBAC roles
 
-What I Learned
+### **What I Learned**
 Working on this project helped me build real cloud engineering skills.
 
-⚡ PowerShell Automation at Scale
+### PowerShell Automation at Scale
 I learned how to structure scripts that are modular, predictable and resilient.
 
-🔐 Identity and Access Management
+### Identity and Access Management
 Hands-on experience with:
 
 Entra ID object models
@@ -82,7 +83,7 @@ RBAC
 
 Secure identity provisioning
 
-🧩 Designing for Reliability
+### Designing for Reliability
 I practiced:
 
 try and catch logic
@@ -93,7 +94,7 @@ validation before creation
 
 building scripts that are safe to run many times
 
-📊 Smart Azure Resource Selection
+### Smart Azure Resource Selection
 I learned how to:
 
 query VM sizes
@@ -102,7 +103,7 @@ compare CPU and memory
 
 select the closest or cheapest match
 
-🏗 Infrastructure as Code Mindset
+### Infrastructure as Code Mindset
 This reinforced:
 
 repeatability
@@ -113,7 +114,7 @@ documentation
 
 version control
 
-🌐 Networking and VM Deployment
+###🌐 Networking and VM Deployment
 I gained hands-on experience with:
 
 VNet and subnet creation
@@ -122,7 +123,7 @@ NIC and public IP setup
 
 VM provisioning
 
-📝 Writing Clean and Shareable Code
+### Writing Clean and Shareable Code
 This project pushed me to:
 
 organize folders
@@ -133,7 +134,7 @@ use meaningful commits
 
 treat the script like a real engineering deliverable
 
-Challenges I Faced
+### **Challenges I Faced**
 ⚠ Azure API Inconsistency
 Some commands behave differently at different times. I handled this with:
 
@@ -161,7 +162,7 @@ compare them
 
 select the closest or cheapest
 
-🔗 Resource Dependencies
+###🔗 **Resource Dependencies**
 A VM depends on:
 
 VNet
@@ -174,11 +175,11 @@ public IP
 
 Each needed proper ordering and validation.
 
-⚖ Balancing Simplicity and Reliability
+### **Balancing Simplicity and Reliability**
 The script had to be simple enough to read but reliable enough for real use.
 
 📝 Logging and Troubleshooting
 PowerShell transcripts helped me track errors and understand script behavior during Cloud Shell sessions.
 
-License
+### **License**
 MIT License. You can use, modify and build on this project.

@@ -1,66 +1,56 @@
-Azure Lab Automation Script (PowerShell)
-This project automates the full setup of a Microsoft Azure lab environment using PowerShell in Azure Cloud Shell. It replaces a multi‑step manual process with a single, reliable, repeatable script designed with production‑grade engineering practices.
+# **Azure Lab Automation Script (PowerShell)**  
+This project automates the full setup of a Microsoft Azure lab environment using PowerShell in Azure Cloud Shell. It replaces a multi-step manual process with a single, reliable and repeatable script.
 
-✅ Features
-Identity Automation
-Creates Microsoft Entra ID users
+---
 
-Generates secure passwords
+## **Features**  
 
-Creates a security group
+### 🔐 **Identity Automation**  
+- Creates Microsoft Entra ID users  
+- Generates secure passwords  
+- Creates a security group  
+- Adds users to the group with validation checks  
 
-Adds users to the group with validation checks
+### ⚙️ **Smart VM Sizing**  
+- Uses your preferred VM size if available  
+- Selects the closest valid size in the region  
+- Optional: automatically selects the cheapest VM size  
 
-Smart VM Sizing
-Uses your preferred VM size if available
+### 🖥️ **Virtual Machine Deployment**  
+- Deploys Windows Server 2025 Datacenter  
+- Creates VNet, subnet, NIC and public IP  
+- Supports custom admin credentials  
+- Includes retry logic for transient Azure issues  
 
-Automatically selects the closest available size in the region
+### 🛡️ **RBAC Assignment**  
+- Assigns **Virtual Machine Contributor** to the group  
+- Ensures proper access control at the resource group level  
 
-Optional: auto‑selects the cheapest VM size
+### 🏗️ **Enterprise Reliability**  
+- Full try and catch error handling  
+- Retry logic for Azure API operations  
+- Logging through PowerShell transcript  
+- Idempotent behavior  
+- Validation before every major step  
 
-Virtual Machine Deployment
-Deploys Windows Server 2025 Datacenter
+---
 
-Creates VNet, subnet, NIC, and public IP
+## **How to Run**  
 
-Supports custom admin credentials
-
-Includes retry logic for transient Azure failures
-
-RBAC Assignment
-Assigns “Virtual Machine Contributor” to the group
-
-Ensures proper access control at the resource‑group level
-
-Enterprise‑Grade Reliability
-Full try/catch error handling
-
-Retry logic for Azure API operations
-
-Logging via PowerShell transcript
-
-Idempotent behavior (safe to run multiple times)
-
-Validation before every major step
-
-
-✅ How to Run
-Basic run:
-powershell^
+**Basic run**
+```powershell
 ./Deploy-Lab.ps1
-
-
 Use a specific VM size
-powershell^
+
+powershell
+Copy code
 ./Deploy-Lab.ps1 -PreferredVMSize "Standard_D2s_v5"
+Pick the cheapest VM size automatically
 
-
-Automatically pick the cheapest VM size
-powershell^
+powershell
+Copy code
 ./Deploy-Lab.ps1 -AutoPickCheapest
-
-
-✅ Requirements
+Requirements
 Azure Cloud Shell (recommended)
 
 Az PowerShell modules
@@ -77,148 +67,118 @@ Deploy VMs
 
 Assign RBAC roles
 
+What I Learned
+Working on this project helped me build real cloud engineering skills.
 
-✅ What I Learned
-Working on this project helped me deepen my understanding of real‑world cloud automation and sharpen several engineering skills:
+⚡ PowerShell Automation at Scale
+I learned how to structure scripts that are modular, predictable and resilient.
 
-🔹 PowerShell Automation at Scale
-I learned how to structure PowerShell scripts that are modular, predictable, and resilient — the kind of scripts that behave well even when cloud APIs don’t.
-
-🔹 Identity & Access Management in Microsoft Entra ID
-Automating user creation, group management, and RBAC assignments gave me hands‑on experience with:
+🔐 Identity and Access Management
+Hands-on experience with:
 
 Entra ID object models
 
-Role‑based access control
+RBAC
 
 Secure identity provisioning
 
-🔹 Designing for Reliability (Error Handling + Retry Logic)
-I gained a deeper appreciation for defensive scripting:
+🧩 Designing for Reliability
+I practiced:
 
-Using try/catch blocks
+try and catch logic
 
-Implementing retry logic for transient Azure failures
+retry handling
 
-Validating resources before creating them
+validation before creation
 
-Ensuring the script is idempotent and safe to run multiple times
+building scripts that are safe to run many times
 
-🔹 Smart Resource Selection in Azure
-Building the VM‑size selection logic taught me how to:
+📊 Smart Azure Resource Selection
+I learned how to:
 
-Query available VM SKUs in a region
+query VM sizes
 
-Compare sizes based on cores and memory
+compare CPU and memory
 
-Automatically choose the cheapest or closest match
+select the closest or cheapest match
 
-🔹 Infrastructure as Code Mindset
-This project reinforced the value of:
+🏗 Infrastructure as Code Mindset
+This reinforced:
 
-Repeatability
+repeatability
 
-Consistency
+consistency
 
-Version control
+documentation
 
-Documentation
+version control
 
-Automation over manual configuration
-
-🔹 Cloud Networking & VM Deployment
-Deploying a full VM stack helped me practice:
+🌐 Networking and VM Deployment
+I gained hands-on experience with:
 
 VNet and subnet creation
 
-NIC and public IP configuration
+NIC and public IP setup
 
-Image selection and OS provisioning
+VM provisioning
 
-🔹 Writing Clean, Documented, Shareable Code
-Publishing this on GitHub pushed me to:
+📝 Writing Clean and Shareable Code
+This project pushed me to:
 
-Organize the project into a clear folder structure
+organize folders
 
-Write a professional README
+create a proper README
 
-Use meaningful commit messages
+use meaningful commits
 
-Treat the script like a real engineering deliverable
+treat the script like a real engineering deliverable
 
+Challenges I Faced
+⚠ Azure API Inconsistency
+Some commands behave differently at different times. I handled this with:
 
-✅ Challenges I Faced
-This project wasn’t just about writing PowerShell — it pushed me to solve real‑world cloud engineering problems.
+retry logic
 
-🔹 Handling Azure’s Inconsistent API Behavior
-Azure operations don’t always behave the same way twice. Some commands succeed instantly, others fail due to transient issues like throttling or propagation delays. This forced me to implement:
+error handling
 
-Retry logic
+validation checks
 
-Error handling
+🌀 Idempotency
+The script needed to run multiple times safely. This required handling cases where:
 
-Validation checks
+users already existed
 
-🔹 Ensuring the Script Was Idempotent
-I needed the script to run multiple times without breaking anything. That meant handling cases where:
+groups were already created
 
-Users already existed
+resources were partially deployed
 
-Groups were already created
+📦 VM Size Selection
+I had to:
 
-VM resources partially deployed
+query available SKUs
 
-🔹 Smart VM Size Selection
-Azure regions don’t always support the same VM sizes. I had to:
+compare them
 
-Query available sizes
+select the closest or cheapest
 
-Compare them
+🔗 Resource Dependencies
+A VM depends on:
 
-Select the closest match
+VNet
 
-Optionally pick the cheapest
+subnet
 
-🔹 Managing Dependencies Between Azure Resources
-Deploying a VM requires:
+NIC
 
-A VNet
+public IP
 
-A subnet
+Each needed proper ordering and validation.
 
-A NIC
+⚖ Balancing Simplicity and Reliability
+The script had to be simple enough to read but reliable enough for real use.
 
-A public IP
+📝 Logging and Troubleshooting
+PowerShell transcripts helped me track errors and understand script behavior during Cloud Shell sessions.
 
-If any of these fail, the whole deployment fails. I had to structure the script so each dependency was created in the correct order with proper validation.
-
-🔹 Balancing Simplicity With Professional‑Grade Reliability
-I wanted the script to be:
-
-Easy to read
-
-Easy to run
-
-Easy to modify
-
-But also:
-
-Robust
-
-Fault‑tolerant
-
-Production‑ready
-
-🔹 Logging and Troubleshooting
-Cloud Shell sessions can be short‑lived, so I needed a reliable way to capture logs. Using PowerShell transcripts helped me:
-
-Track failures
-
-Debug issues
-
-Understand script behavior over time
-
-
-
-✅ License
-MIT License — feel free to use, modify, and build upon this project.
+License
+MIT License. You can use, modify and build on this project.

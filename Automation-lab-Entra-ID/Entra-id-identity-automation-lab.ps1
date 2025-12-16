@@ -51,6 +51,19 @@ $priority         = "Spot"
 $evictionPolicy   = "Deallocate"
 $maxPrice         = -1
 
+# Connect to Azure if not already connected
+if (-not (Get-AzContext)) {
+    Connect-AzAccount
+}
+
+# Connect to Azure AD if not already connected
+try {
+    Get-AzureADTenantDetail -ErrorAction Stop | Out-Null
+}
+catch {
+    Connect-AzureAD
+}
+
 # -------------------------
 # 2. Resource Group
 # -------------------------
@@ -215,3 +228,4 @@ Write-Host "Image: $vmImageSku"
 Write-Host "Users: $($labUsers.UserName -join ', ')"
 Write-Host "Group: $aadGroupName"
 Write-Host "RBAC: Virtual Machine Contributor assigned to group"
+

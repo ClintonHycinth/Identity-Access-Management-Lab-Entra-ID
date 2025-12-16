@@ -1,66 +1,83 @@
-Azure Lab Automation Script (PowerShell)
-This project automates the full setup of a Microsoft Azure lab environment using PowerShell in Azure Cloud Shell. It replaces a multi‑step manual process with a single, reliable, repeatable script designed with production‑grade engineering practices.
+# Microsoft Entra ID Identity & RBAC Automation Lab (PowerShell)
 
-✅ Features
-Identity Automation
-Creates Microsoft Entra ID users
+This repository contains the **automated version** of an Entra ID and Azure RBAC lab built with PowerShell.  
+The same lab was first completed manually using the Azure Portal, and this script recreates the entire setup in a repeatable, one-click way.
 
-Generates secure passwords
+The goal is to practice **identity management, role-based access control, and VM deployment**, exactly as expected in real Azure admin work and the AZ-104 exam.
 
-Creates a security group
+---
 
-Adds users to the group with validation checks
+## What This Lab Automates
 
-Smart VM Sizing
-Uses your preferred VM size if available
+The script performs the following actions from start to finish:
 
-Automatically selects the closest available size in the region
+### Entra ID (Azure AD)
+- Creates two users:
+  - Engineer1  
+  - Engineer2
+- Creates a security group:
+  - **lab engineers**
+- Adds both users to the group
 
-Optional: auto‑selects the cheapest VM size
+### Azure Resources
+- Creates or reuses a resource group: **rg-104**
+- Deploys networking:
+  - Virtual Network
+  - Subnet
+  - Public IP
+  - Network Interface
+- Creates a **Windows Server 2025 Datacenter VM** with:
+  - Size: `Standard_D2ads_v6`
+  - Region: West Europe
+  - Availability Zone: 1
+  - Spot VM enabled
+  - Eviction policy: Deallocate
 
-Virtual Machine Deployment
-Deploys Windows Server 2025 Datacenter
+### RBAC
+- Assigns **Virtual Machine Contributor** role
+- Scope: Resource Group (`rg-104`)
+- Role is assigned to the **lab engineers** group, not individual users
 
-Creates VNet, subnet, NIC, and public IP
+This mirrors real-world best practice where access is granted to groups, not people.
 
-Supports custom admin credentials
+---
 
-Includes retry logic for transient Azure failures
+## Why This Lab Matters
 
-RBAC Assignment
-Assigns “Virtual Machine Contributor” to the group
+This lab covers multiple core Azure admin skills in one setup:
 
-Ensures proper access control at the resource‑group level
+- Entra ID user and group management
+- Group-based RBAC
+- Understanding role scope and permissions
+- VM deployment with availability zones
+- Cost optimization using Spot VMs
+- Translating portal actions into automation
 
-Enterprise‑Grade Reliability
-Full try/catch error handling
+---
 
-Retry logic for Azure API operations
+## Prerequisites
 
-Logging via PowerShell transcript
+Before running the script, make sure you have:
 
-Idempotent behavior (safe to run multiple times)
+- An active Azure subscription
+- Azure PowerShell modules installed:
+  - `Az`
+  - `AzureAD`
+- Logged in to Azure:
+  ```powershell
+  Connect-AzAccount
+  Connect-AzureAD
 
-Validation before every major step
-
-
-✅ How to Run
+## How to Run
 Basic run:
 powershell^
 ./Deploy-Lab.ps1
-
-
-Use a specific VM size
-powershell^
-./Deploy-Lab.ps1 -PreferredVMSize "Standard_D2s_v5"
-
 
 Automatically pick the cheapest VM size
 powershell^
 ./Deploy-Lab.ps1 -AutoPickCheapest
 
-
-✅ Requirements
+## Requirements
 Azure Cloud Shell (recommended)
 
 Az PowerShell modules
@@ -77,8 +94,7 @@ Deploy VMs
 
 Assign RBAC roles
 
-
-✅ What I Learned
+## What I Learned
 Working on this project helped me deepen my understanding of real‑world cloud automation and sharpen several engineering skills:
 
 🔹 PowerShell Automation at Scale
@@ -147,7 +163,7 @@ Use meaningful commit messages
 Treat the script like a real engineering deliverable
 
 
-✅ Challenges I Faced
+## Challenges I Faced
 This project wasn’t just about writing PowerShell — it pushed me to solve real‑world cloud engineering problems.
 
 🔹 Handling Azure’s Inconsistent API Behavior
@@ -220,5 +236,5 @@ Understand script behavior over time
 
 
 
-✅ License
+## License
 MIT License — feel free to use, modify, and build upon this project.
